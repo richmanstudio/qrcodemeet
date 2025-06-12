@@ -1,14 +1,17 @@
 // src/App.tsx
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home  from './routes/Home';
-import Gifts from './routes/Gifts';
+// вместо BrowserRouter берём HashRouter
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+
+import Home    from './routes/Home';
+import Gifts   from './routes/Gifts';
 import Payment from './routes/Payment';
-import Camera from './routes/Camera';
-import Result from './routes/Result';
+import Camera  from './routes/Camera';
+import Result  from './routes/Result';
 
 const App: React.FC = () => (
-  <BrowserRouter>
+  // basename в HashRouter не нужен, всё идёт после #
+  <Router>
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/gifts" element={<Gifts />} />
@@ -16,7 +19,7 @@ const App: React.FC = () => (
       <Route path="/camera" element={<Camera />} />
       <Route path="/result" element={<Result />} />
     </Routes>
-  </BrowserRouter>
+  </Router>
 );
 
 export default App;
